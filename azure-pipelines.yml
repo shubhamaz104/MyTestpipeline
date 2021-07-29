@@ -1,0 +1,32 @@
+# Starter pipeline
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'MyTestpipeline-conn'
+    subscriptionId: '8bb4ffba-e10f-4638-9128-816e6f309502'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'arm-vscode'
+    location: 'Central US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/shubhamaz104/MyTestpipeline/main/MyWebApp/azuredeploy.json'
+    overrideParameters: '-projectName MyTestDevops'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipeline Template'
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
